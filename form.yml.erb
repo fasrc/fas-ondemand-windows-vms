@@ -11,7 +11,7 @@ attributes:
     widget: text_field
   bc_queue: "kvm"
   bc_num_hours: null
-  <% if defined?(@custom_memory_per_node_select) && @custom_memory_per_node_select %>
+  <%- if defined?(@custom_memory_per_node_select) && @custom_memory_per_node_select -%>
   custom_memory_per_node:
     label: Memory Allocation in GB
     value: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 16 %>
@@ -19,9 +19,9 @@ attributes:
     step: 1
     max: <%= defined?(@custom_memory_per_node_max) ? @custom_memory_per_node_max : 252 %>
     widget: number_field
-  <% else %>
+  <%- else -%>
   custom_memory_per_node: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 32 %>
-  <% end %>
+  <%- end -%>
   <%- if defined?(@custom_num_cores_select) && @custom_num_cores_select -%>
   custom_num_cores:
     label: Number of cores
