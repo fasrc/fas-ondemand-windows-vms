@@ -22,7 +22,7 @@ attributes:
   <% else %>
   custom_memory_per_node: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 32 %>
   <% end %>
-  <% if defined?(@custom_num_cores_select) && @custom_num_cores_select %>
+  <%- if defined?(@custom_num_cores_select) && @custom_num_cores_select -%>
   custom_num_cores:
     label: Number of cores
     value: <%= defined?(@custom_num_cores) ? @custom_num_cores : 4 %>
@@ -31,27 +31,27 @@ attributes:
     max: <%= defined?(@custom_num_cores_max) ? @custom_num_cores_max : 64 %>
     widget: number_field
     help: "Number of Cpus per task"
-  <% else %>
+  <%- else -%>
   custom_num_cores: <%= defined?(@custom_num_cores) ? @custom_num_cores : 8 %>
-  <% end %>
+  <%- end -%>
   custom_num_gpus: <%= defined?(@custom_num_gpus) ? @custom_num_gpus : 0 %>
-  <% if defined?(@base_image_select) && @base_image_select %>
-    base_image:
-      label: Base Windows image
-      widget: select
-      options:
-        - [ "Windows SEAS Solidworks", "SEAS/seas_win_sw_05.qcow2" ]
-        - [ "Windows SEAS Solidworks AutoDesk", "SEAS/seas_win_sw_ad_05.qcow2" ]
-        - [ "Windows SEAS Solidworks Comsol", "SEAS/seas_win_sw_comsol_05.qcow2" ]
-        - [ "Windows SEAS Solidworks Comsol Granta", "SEAS/seas_win_sw_comsol_granta_05.qcow2" ]
-        - [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ]
-  <% else %>
-    base_image:
-      label: Base Windows image
-      widget: select
-      options:
-        -  <%= defined?(@base_image) ? @base_image : [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ] %>
-  <% end %>
+  <%- if defined?(@base_image_select) && @base_image_select -%>
+  base_image:
+    label: Base Windows image
+    widget: select
+    options:
+      - [ "Windows SEAS Solidworks", "SEAS/seas_win_sw_05.qcow2" ]
+      - [ "Windows SEAS Solidworks AutoDesk", "SEAS/seas_win_sw_ad_05.qcow2" ]
+      - [ "Windows SEAS Solidworks Comsol", "SEAS/seas_win_sw_comsol_05.qcow2" ]
+      - [ "Windows SEAS Solidworks Comsol Granta", "SEAS/seas_win_sw_comsol_granta_05.qcow2" ]
+      - [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ]
+  <%- else -%>
+  base_image:
+    label: Base Windows image
+    widget: select
+    options:
+      -  <%= defined?(@base_image) ? @base_image : [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ] %>
+  <%- end -%>
   custom_newimage:
     label: "Start from a new copy of the image"
     widget: check_box
