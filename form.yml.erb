@@ -35,13 +35,7 @@ attributes:
   custom_num_cores: <%= defined?(@custom_num_cores) ? @custom_num_cores : 8 %>
   <% end %>
   custom_num_gpus: <%= defined?(@custom_num_gpus) ? @custom_num_gpus : 0 %>
-  <% if defined?(@base_image_predefined) && @base_image_predefined %>
-    base_image:
-      label: Base Windows image
-      widget: select
-      options:
-        -  <%= defined?(@base_image) ? @base_image : [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ] %>
-  <% else %>
+  <% if defined?(@base_image_select) && @base_image_select %>
     base_image:
       label: Base Windows image
       widget: select
@@ -51,6 +45,12 @@ attributes:
         - [ "Windows SEAS Solidworks Comsol", "SEAS/seas_win_sw_comsol_05.qcow2" ]
         - [ "Windows SEAS Solidworks Comsol Granta", "SEAS/seas_win_sw_comsol_granta_05.qcow2" ]
         - [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ]
+  <% else %>
+    base_image:
+      label: Base Windows image
+      widget: select
+      options:
+        -  <%= defined?(@base_image) ? @base_image : [ "Basic FAS-RC Image", "FAS-RC/fasrc-base_05.qcow2" ] %>
   <% end %>
   custom_newimage:
     label: "Start from a new copy of the image"
