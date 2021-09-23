@@ -63,6 +63,7 @@ attributes:
 
           If you run into issues, for example if you made modifications to your image and something went wrong and now it does not work correctly any more, or for whatever other reason you would like to start from scratch, please select the checkbox to ignore previous images and start from a brand new copy of the VM.
 
+  <%- if defined?(@use_custom_image_file) && @use_custom_image_file -%>
   imagefile:
     label: windows VM image file (advanced option)
     widget: text_field
@@ -70,6 +71,9 @@ attributes:
           If you want to use your own custom image instead of selectig from the menu above, please provide the full path to a vaid qcow2 image.
 
           Please note that if the image is not already in the designated VM_SCRATCH folder, it will be copied there at runtime. That might take a considerable amount of time, so please be patient.
+  <%- else -%>
+  imagefile: null
+  <%- end -%>
 
 form:
   - bc_num_slots
